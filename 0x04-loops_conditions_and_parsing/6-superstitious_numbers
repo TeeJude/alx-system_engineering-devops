@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+# Bash script that displays numbers from 1 to 20 and display bad luck from China after the 4th loop, bad luch from Japan after the 9th loop and bad luch from Italy after the 17th loop
+i=1
+while ((i < 21))
+do
+	echo $i
+	case "$i" in
+		4) echo 'bad luck from China';;
+		9) echo 'bad luck from Japan';;
+		17) echo 'bad luck from Italy';;
+		esac
+	((i++))
+done
