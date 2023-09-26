@@ -1,14 +1,8 @@
 #!/usr/bin/env bash
+# a bash scripts that installs Nginx and configure it to listen on port 80
+# then serve a page that prints "Hello World"
 
-echo -e "Updating and installing Nginx.\n"
-sudo apt-get update -y -qq && \
-	 sudo apt-get install nginx -y
-echo -e "\nSetting up some minor stuff.\n"
+sudo apt-get -y update
+sudo apt-get -y install nginx
+echo 'Hello World!' > /var/www/html/index.nginx-debian.html
 sudo service nginx start
-sudo ufw allow 'Nginx HTTP'
-sudo chown -R "$USER":"$USER" /var/www/html
-sudo chmod -R 755 /var/www
-cp /var/www/html/index.nginx-debian.html /var/www/html/index.nginx-debian.html.bckp
-echo -e "Hello World!" | dd status=none of=/var/www/html/index.nginx-debian.html
-sudo service nginx restart
-echo -e "\nCompleted.\n"
