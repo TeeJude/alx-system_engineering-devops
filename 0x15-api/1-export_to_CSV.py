@@ -1,6 +1,5 @@
 #!/usr/bin/python3
-"""Script that exports to-do list progress for a given 
-employee ID to CSV format."""
+"""Exporting to-do list progress for a given employee ID to CSV format."""
 import csv
 import requests
 import sys
