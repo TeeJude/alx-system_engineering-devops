@@ -2,25 +2,18 @@
 """Script that exports to-do list progress for a given 
 employee ID to CSV format."""
 import csv
-import json
 import requests
 import sys
 
+if __name__ == "__main__":
+    user_id = sys.argv[1]
+    url = "https://jsonplaceholder.typicode.com/"
+    user = requests.get(url + "users/{}".format(user_id)).json()
+    username = user.get("username")
+    todos = requests.get(url + "todos", params={"userId": user_id}).json()
 
-def get_user_todo_list():
-    employee_id = int(sys.argv[1])
-    url1 = 'https://jsonplaceholder.typicode.com/users/%s' % employee_id
-    url2 = '%s/todos' % url1
-    todo_list = requests.get(url2).json()
-    user = requests.get(url1).json()
-    path = "{}.csv".format(employee_id)
-
-    with open(path, 'w', encoding='utf-8') as f:
-        writer = csv.writer(f, delimiter=',', quoting=csv.QUOTE_ALL)
-        for todo in todo_list:
-            writer.writerow([employee_id, user.get('username'),
-                            todo.get('completed'), todo.get('title')])
-
-
-if __name__ == '__main__':
-    get_user_todo_list()
+    with open("{}.csv".format(user_id), "w", newline="") as csvfile:
+        writer = csv.writer(csvfile, quoting=csv.QUOTE_ALL)
+        [writer.writerow(
+            [user_id, username, t.get("completed"), t.get("title")]
+         ) for t in todos]
