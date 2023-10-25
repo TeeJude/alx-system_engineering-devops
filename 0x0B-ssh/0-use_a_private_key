@@ -1,4 +1,4 @@
 #!/usr/bin/env bash
 #Bash script connects to server 54.172.56.188 using private key ~/.ssh/school
 
-ssh -i ~/.ssh/school ubuntu@54.172.56.188
+ssh -i ~/.ssh/school ubuntu@18.210.13.209
