@@ -1,10 +1,9 @@
 #!/usr/bin/python3
 """Contains recursive function that returns list of titles"""
 
-
 def recurse(subreddit, hot_list=[], count=0, after=None):
-    """Function that queries the Reddit API and returns all hot
-    posts of the subreddit"""
+    """Functions that queries the Reddit API and returns all hot posts
+    of the subreddit"""
     import requests
 
     sub_info = requests.get("https://www.reddit.com/r/{}/hot.json"
