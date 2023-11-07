@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-"""Contains recursive function"""
+"""Contains recursive function that returns list of titles"""
 
 
 def recurse(subreddit, hot_list=[], count=0, after=None):
